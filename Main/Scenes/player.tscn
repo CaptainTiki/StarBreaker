@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpr27y7t1bg5u"]
+
+[ext_resource type="Script" path="res://Main/Scripts/player.gd" id="1_6pjb5"]
+[ext_resource type="Script" path="res://Actors/Components/stats_node.gd" id="1_r0n03"]
+[ext_resource type="Script" path="res://Actors/Components/health_node.gd" id="2_e01in"]
+[ext_resource type="Script" path="res://Actors/Components/movement_node.gd" id="4_neqkb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x145q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sjnx2"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_node")]
+script = ExtResource("1_6pjb5")
+health_node = NodePath("Components/HealthNode")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_x145q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_sjnx2")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="StatsNode" type="Node" parent="Components"]
+script = ExtResource("1_r0n03")
+
+[node name="HealthNode" type="Node" parent="Components"]
+script = ExtResource("2_e01in")
+
+[node name="MovementNode" type="Node" parent="Components" node_paths=PackedStringArray("player", "stats_node")]
+script = ExtResource("4_neqkb")
+player = NodePath("../..")
+stats_node = NodePath("../StatsNode")
