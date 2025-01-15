@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpr27y7t1bg5u"]
+[gd_scene load_steps=9 format=3 uid="uid://dpr27y7t1bg5u"]
 
 [ext_resource type="Script" path="res://Main/Scripts/player.gd" id="1_6pjb5"]
 [ext_resource type="Script" path="res://Actors/Components/stats_node.gd" id="1_r0n03"]
 [ext_resource type="Script" path="res://Actors/Components/health_node.gd" id="2_e01in"]
 [ext_resource type="Script" path="res://Actors/Components/movement_node.gd" id="4_neqkb"]
+[ext_resource type="Script" path="res://Main/Scenes/armor_node.gd" id="5_8m6wm"]
+[ext_resource type="Script" path="res://Main/Scenes/weapons_container_node.gd" id="6_45kll"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x145q"]
 
@@ -31,3 +33,9 @@ script = ExtResource("2_e01in")
 script = ExtResource("4_neqkb")
 player = NodePath("../..")
 stats_node = NodePath("../StatsNode")
+
+[node name="ArmorNode" type="Node" parent="Components"]
+script = ExtResource("5_8m6wm")
+
+[node name="WeaponsContainerNode" type="Node" parent="Components"]
+script = ExtResource("6_45kll")
